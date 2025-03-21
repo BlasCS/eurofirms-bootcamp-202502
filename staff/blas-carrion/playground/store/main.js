@@ -56,9 +56,9 @@ function addCar(brand, model, color, year, kilometers) {
     const milliseconds = String(date.getMilliseconds()).padStart(3, '0');
 
     return `${year}${month}${day}-${hours}${minutes}${seconds}${milliseconds}`;
-}
+    }
 
-const id = generateID();
+    const id = generateID();
     
     var car = {}
 
@@ -72,11 +72,32 @@ const id = generateID();
     products[products.length] = car
 }
 
-
+function updateCar(id, brand, model, color, year, kilometers) {
+    /*
+    STEPS
+    - iterar en products (cars) y encontrar indice (posicion) en la que está el coche con ese id
+    - extraer coche del array (usan[i].id === iddo ese indice)
+    - actualizar todos los campos del coche, con los datos de entrada en la funcion
+    */
+    for (let i = 0; i < products.length; i++) {
+        if(products[i].id === id) {
+            let car = products[i]
+            car.brand = brand
+            car.model = model
+            car.color = color
+            car.year = year
+            car.kilometers = kilometers
+        }
+    }
+    
+    
+}
 
 addCar('Audi', 'A1', 'gray', 2013, 170000)
 addCar('Smart', 'ForTwo', 'yellow', 2024, 17000)
 addCar('Fiat', '500 Abarth', 'skyblue', 2023, 56000)
+updateCar('20250315-1603', 'Renault', 'Clio', 'green', 2015, 225000)
+updateCar('20250315-1605', 'Citröen', 'C3', 'black', 2012, 310000)
 
 // view cars
 
